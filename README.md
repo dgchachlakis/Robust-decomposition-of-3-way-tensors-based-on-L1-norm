@@ -1,7 +1,7 @@
 ## Robust-decomposition-of-3-way-tensors-based-on-L1-norm
 
 
-We consider 3-way tensor --i.e., a collection of 2-way measurements (matrices) collated across mode-3-- and implement AM-L1-TUCKER2 algorithm of [[1]](https://doi.org/10.1117/12.2307843) for L1-norm Tucker2 (L1-Tucker2) decomposition (joint processing of the 2-way measurements) of the processed tensor. L1-Tucker2 of 3-way tensors is formulated as
+We consider 3-way tensor --i.e., a collection of 2-way measurements (matrices) collated across mode-3-- and implement AM-L1-Tucker2 algorithm of [[1]](https://doi.org/10.1117/12.2307843) for L1-norm Tucker2 (L1-Tucker2) decomposition (joint processing of the 2-way measurements) of the processed tensor. L1-Tucker2 of 3-way tensors is formulated as
 
 ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20%5Cfn_phv%20%5Clarge%20%5Cunderset%7B%20%5Cbegin%7Bsmallmatrix%7D%20%5Cmathbf%20U%20%5Cin%20%5Cmathbb%20R%5E%7BD%20%5Ctimes%20K%7D%7E%3A%7E%5Cmathbf%20U%5E%5Ctop%5Cmathbf%20U%3D%5Cmathbf%20I_K%20%5C%5C%20%5Cmathbf%20V%20%5Cin%20%5Cmathbb%20R%5E%7BM%20%5Ctimes%20K%7D%7E%3A%7E%5Cmathbf%20V%5E%5Ctop%5Cmathbf%20V%3D%5Cmathbf%20I_K%20%5Cend%7Bsmallmatrix%7D%7D%20%7B%5Ctext%7Bmax.%7D%7D%5Csum%5Climits_%7Bn%3D1%7D%5EN%20%5Cleft%5C%7C%5Cmathbf%20U%5E%5Ctop%5Cmathbf%20X_n%5Cmathbf%20V%5Cright%5C%7C_1.)
 
@@ -34,7 +34,7 @@ number_of_components = 8
 left = linalg.orth(np.random.randn(D, number_of_components))
 right = linalg.orth(np.random.randn(M, number_of_components))
 ```
-Next, we call AM-L1-Tucker on the data tensor with no user-defined initialization factors.
+Next, we call AM-L1-Tucker2 on the data tensor with no user-defined initialization factors.
 
 ```python
 # ===========================
