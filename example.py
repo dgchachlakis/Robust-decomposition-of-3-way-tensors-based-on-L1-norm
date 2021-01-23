@@ -1,25 +1,22 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import algorithm as l1tucker2
 from scipy import linalg
 from utils import *
-
-D = 5
-M = 5
+D = 10
+M = 10
 N = 10
-K = 3
-print('\n'*5)
-U=linalg.orth(np.random.randn(D, K))
-V=linalg.orth(np.random.randn(M, K))
-X=np.random.randn(D, M, N)
-B=update_b(X, U, V)
-Z=zofb(X, B)
+number_of_components = 4
 
-un, v, met = alternating_uv(Z, V)
-
-B2 = np.sign(np.random.randn(K, K, N))
-
-ZZ = update_z(X, Z, B2, B)
+data_tensor = np.random.randn(D, M, N)
+U, V, metric_evolution = l1tucker2.am_l1_tucker2(data_tensor, number_of_components)
 
 plt.figure()
-plt.plot(met)
+plt.plot(metric_evolution)
+plt.xlabel('Iteration index')
+plt.ylabel('Metric')
 plt.show()
+
+
+#U = linalg.orth(np.random.randn(D, K))
+#V = linalg.orth(np.random.randn(M, K))
