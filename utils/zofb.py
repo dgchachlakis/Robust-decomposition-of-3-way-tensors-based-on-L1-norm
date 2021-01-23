@@ -10,6 +10,5 @@ def zofb(data_tensor, aux_bin_tensor):
             b = aux_bin_tensor[i, k, :].flatten()
             b2 = np.kron(b, np.ones(D * M, )).copy()
             B = b2.reshape((D, M, N), order = 'F')
-            Z[np.ix_(idr, idc)] = np.sum(B * data_tensor, axis=2)
+            Z[np.ix_(idr, idc)] = np.sum(B * data_tensor, axis = 2)
     return Z
-    

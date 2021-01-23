@@ -1,11 +1,14 @@
 import numpy as np
 from scipy import linalg
 from utils import *
-def am_l1_tucker2(data_tensor, number_of_components, tolerance = 1e-6, init_factors = None):
+def am_l1_tucker2(data_tensor, number_of_components, *init_factors, tolerance = 1e-6):
     (D, M, N) = data_tensor.shape
-    if init_factors != None:
+    if len(init_factors) == 2:
         (left_factor, right_factor) = init_factors
-    else:
+    elif len(init_factors) == 1:
+        left_factor = init_factors[0]
+        right_factor = linalg.orth(np.random.randn(M, number_of_components))
+    else: 
         left_factor = linalg.orth(np.random.randn(D, number_of_components))
         right_factor = linalg.orth(np.random.randn(M, number_of_components))
     aux_bin_tensor_old = update_b(data_tensor, left_factor, right_factor)

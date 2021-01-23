@@ -5,7 +5,6 @@ def update_z(data_tensor, Zold, Bnew, Bold):
     K = Bold.shape[0]
     dif = (Bnew != Bold) * 1
     kax_out = np.where(np.sum(np.sum(dif, axis = 2), axis = 1) > 0)[0]
-    
     if kax_out.size > 0 :
         for ko in np.nditer(kax_out):
             difin = np.squeeze(dif[ko, :, :])
